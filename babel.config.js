@@ -1,16 +1,26 @@
 /* eslint global-require: off, import/no-extraneous-dependencies: off */
 const developmentEnvironments = ['development', 'test']
 
-// const developmentPlugins = [require('@babel/plugin-transform-runtime')]
+const developmentPlugins = [
+  [
+    '@babel/plugin-transform-runtime',
+    {
+      corejs: {
+        version: 3,
+        proposals: true,
+      },
+      useESModules: true,
+    },
+  ],
+]
 
-// const productionPlugins = [
-//   require('babel-plugin-dev-expression'),
-
-//   // babel-preset-react-optimize
-//   require('@babel/plugin-transform-react-constant-elements'),
-//   require('@babel/plugin-transform-react-inline-elements'),
-//   require('babel-plugin-transform-react-remove-prop-types'),
-// ]
+const productionPlugins = [
+  // require('babel-plugin-dev-expression'),
+  // // babel-preset-react-optimize
+  // require('@babel/plugin-transform-react-constant-elements'),
+  // require('@babel/plugin-transform-react-inline-elements'),
+  // require('babel-plugin-transform-react-remove-prop-types'),
+]
 
 module.exports = (api) => {
   const development = api.env(developmentEnvironments)
@@ -20,8 +30,8 @@ module.exports = (api) => {
       [
         '@babel/preset-env',
         {
-          targets: { browsers: ['last 2 chrome versions'] },
-          useBuiltIns: 'usage',
+          // 防止babel将任何模块类型都转译成CommonJS类型，导致tree-shaking失效问题
+          modules: false,
         },
       ],
       require('@babel/preset-typescript'),
@@ -51,7 +61,7 @@ module.exports = (api) => {
       //   require('@babel/plugin-syntax-import-meta'),
       //   [require('@babel/plugin-proposal-class-properties')],
       //   require('@babel/plugin-proposal-json-strings'),
-      //   ...(development ? developmentPlugins : productionPlugins),
+      ...(development ? developmentPlugins : productionPlugins),
     ],
   }
 }

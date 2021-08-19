@@ -19,5 +19,5 @@
     "isolatedModules": true,
     "noEmit": true
   },
-  "include": ["src/**/*", "config/**/*", "typings.d.ts", "scripts/*"]
+  "include": ["src/**/*", "configs/**/*", "typings.d.ts", "scripts/*"]
 }
