@@ -115,7 +115,7 @@ module.exports = merge(baseConfig, {
     }),
     new HtmlWebpackPlugin({
       filename: path.join('index.html'),
-      template: path.join(webpackPaths.publicPath, 'index.html'),
+      template: path.join(webpackPaths.appPublic, 'index.html'),
       minify: {
         collapseWhitespace: true,
         removeAttributeQuotes: true,
@@ -134,7 +134,7 @@ module.exports = merge(baseConfig, {
 
   devServer: {
     allowedHosts: ['ui.classroom.com'],
-    contentBase: webpackPaths.distPath,
+    contentBase: [webpackPaths.appDist, webpackPaths.appPublic],
     publicPath: '/',
     port,
     open: true,

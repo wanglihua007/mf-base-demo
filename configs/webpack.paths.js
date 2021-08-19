@@ -1,13 +1,36 @@
 const path = require('path')
+const getPublicUrlOrPath = require('react-dev-utils/getPublicUrlOrPath')
 
-const rootPath = path.join(__dirname, '..')
-const srcPath = path.join(rootPath, 'src')
-const distPath = path.join(rootPath, 'dist')
-const publicPath = path.join(rootPath, 'public')
+const resolvePath = (resolveRoot) => (filePath) => {
+  return path.join(resolveRoot, filePath)
+}
+
+const appRoot = path.join(__dirname, '..')
+const resolveApp = resolvePath(appRoot)
+
+const appSrc = resolveApp('src')
+const resolveSrc = resolvePath(appSrc)
+
+const appDist = resolveApp('dist')
+const resolveDist = resolvePath(appDist)
+
+const appPublic = resolveApp('public')
+const resolvePublic = resolvePath(appPublic)
+
+const publicUrlOrPath = getPublicUrlOrPath(
+  process.env.NODE_ENV === 'development',
+  require(resolveApp('package.json')).homepage,
+  process.env.PUBLIC_URL
+)
 
 module.exports = {
-  rootPath,
-  srcPath,
-  distPath,
-  publicPath,
+  appRoot,
+  appSrc,
+  appDist,
+  appPublic,
+  appHtml: resolvePublic('index.html'),
+  appIndexJs: resolveSrc('index'),
+  appPackageJson: resolveApp('package.json'),
+  appTsConfig: resolveApp('tsconfig.json'),
+  publicUrlOrPath,
 }

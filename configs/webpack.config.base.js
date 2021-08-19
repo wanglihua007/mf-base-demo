@@ -5,9 +5,10 @@ const { dependencies: externals } = require('../package.json')
 const envConfig = require('./env')
 const { NODE_ENV } = process.env
 module.exports = {
-  entry: path.resolve(webpackPaths.srcPath, 'index'),
+  target: 'web',
+  entry: path.resolve(webpackPaths.appSrc, 'index'),
   output: {
-    path: webpackPaths.distPath,
+    path: webpackPaths.appDist,
     publicPath: '/',
     filename: 'static/js/[name].js',
   },
@@ -93,7 +94,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
     alias: {
-      '@': webpackPaths.srcPath,
+      '@': webpackPaths.appSrc,
     },
   },
   plugins: [
@@ -109,7 +110,7 @@ module.exports = {
       name: 'app2',
       filename: 'chip.js',
       exposes: {
-        './Chip': path.join(webpackPaths.srcPath, 'App'),
+        './Chip': path.join(webpackPaths.appSrc, 'App'),
       },
       shared: {
         react: {

@@ -12,7 +12,7 @@ function App() {
         variant="contained"
         onClick={() => scoreboardModal.open()}
       >
-        open
+        openddd
       </Button>
       <Scoreboard
         open={scoreboardModal.isOpen}

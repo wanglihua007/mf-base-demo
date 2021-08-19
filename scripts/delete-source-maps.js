@@ -3,5 +3,5 @@ import rimraf from 'rimraf'
 import webpackPaths from '../configs/webpack.paths'
 
 export default function deleteSourceMaps() {
-  rimraf.sync(path.join(webpackPaths.distPath, '*.js.map'))
+  rimraf.sync(path.join(webpackPaths.appDist, '*.js.map'))
 }

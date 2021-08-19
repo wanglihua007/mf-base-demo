@@ -60,7 +60,7 @@ module.exports = merge(baseConfig, {
     }),
     new HtmlWebpackPlugin({
       filename: path.join('index.html'),
-      template: path.join(webpackPaths.publicPath, 'index.html'),
+      template: path.join(webpackPaths.appPublic, 'index.html'),
       minify: {
         collapseWhitespace: true,
         removeAttributeQuotes: true,
