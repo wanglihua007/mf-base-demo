@@ -1,5 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
+const WebpackBar = require('webpackbar')
+
 const webpackPaths = require('./webpack.paths.js')
 const { dependencies: externals } = require('../package.json')
 const envConfig = require('./env')
@@ -98,6 +100,7 @@ module.exports = {
     },
   },
   plugins: [
+    new WebpackBar({ profile: true }),
     new webpack.DefinePlugin({
       GLOBAL_CONFIG: JSON.stringify(envConfig[NODE_ENV]),
       REACT_APP_ENV: JSON.stringify(NODE_ENV),

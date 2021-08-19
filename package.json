@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "cross-env NODE_ENV=development PORT=50051 webpack serve --config ./configs/webpack.config.dev.js",
-    "build": "cross-env NODE_ENV=production node ./scripts/build.js",
-    "start": "node -r @babel/register ./scripts/check-port-in-use.js && yarn dev"
+    "build": "node ./scripts/build.js",
+    "start": "node ./scripts/start.js"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
@@ -51,7 +51,8 @@
     "webpack-bundle-analyzer": "^4.4.2",
     "webpack-cli": "^4.8.0",
     "webpack-dev-server": "^3.11.2",
-    "webpack-merge": "^5.8.0"
+    "webpack-merge": "^5.8.0",
+    "webpackbar": "^5.0.0-3"
   },
   "dependencies": {
     "@babel/runtime-corejs3": "^7.15.3",

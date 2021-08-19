@@ -29,8 +29,9 @@ module.exports = {
   appDist,
   appPublic,
   appHtml: resolvePublic('index.html'),
-  appIndexJs: resolveSrc('index'),
+  appIndexJs: resolveSrc('index.ts'),
   appPackageJson: resolveApp('package.json'),
   appTsConfig: resolveApp('tsconfig.json'),
+  yarnLockFile: resolveApp('yarn.lock'),
   publicUrlOrPath,
 }
