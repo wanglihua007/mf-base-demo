@@ -5,9 +5,6 @@ import { Scoreboard } from '@/components'
 
 function App() {
   const scoreboardModal = useDialog()
-  useEffect(() => {
-    console.log(`window.electron`, window?.electron)
-  }, [])
   return (
     <div>
       <Button
@@ -15,14 +12,7 @@ function App() {
         variant="contained"
         onClick={() => scoreboardModal.open()}
       >
-        open
-      </Button>
-      <Button
-        color="primary"
-        variant="contained"
-        onClick={() => scoreboardModal.close()}
-      >
-        close
+        openssss
       </Button>
       <Scoreboard
         open={scoreboardModal.isOpen}
