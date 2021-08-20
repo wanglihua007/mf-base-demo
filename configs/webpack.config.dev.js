@@ -133,9 +133,7 @@ module.exports = merge(baseConfig, {
   },
 
   devServer: {
-    allowedHosts: ['ui.classroom.com'],
     contentBase: [webpackPaths.appDist, webpackPaths.appPublic],
-    publicPath: '/',
     port,
     open: true,
     compress: true,

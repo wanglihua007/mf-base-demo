@@ -11,7 +11,6 @@ module.exports = {
   entry: path.resolve(webpackPaths.appSrc, 'index'),
   output: {
     path: webpackPaths.appDist,
-    publicPath: '/',
     filename: 'static/js/[name].js',
   },
   module: {
