@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const WebpackBar = require('webpackbar')
 
 const webpackPaths = require('./webpack.paths.js')
-const { dependencies: externals } = require('../package.json')
+const { dependencies: externals } = require(webpackPaths.appPackageJson)
 const envConfig = require('./env')
 const { NODE_ENV } = process.env
 module.exports = {
@@ -113,17 +113,18 @@ module.exports = {
       filename: 'chip.js',
       exposes: {
         './Chip': path.join(webpackPaths.appSrc, 'App'),
+        './components': path.join(webpackPaths.appSrc, 'components'),
       },
       shared: {
         react: {
           singleton: true,
           eager: true,
-          requiredVersion: '17',
+          requiredVersion: externals.react,
         },
         'react-dom': {
           singleton: true,
           eager: true,
-          requiredVersion: '17',
+          requiredVersion: externals['react-dom'],
         },
       },
     }),
