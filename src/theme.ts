@@ -1,17 +1,11 @@
-import { createMuiTheme } from '@material-ui/core/styles'
+import { createTheme } from '@material-ui/core/styles'
 
-export const theme = createMuiTheme({
+export const theme = createTheme({
   overrides: {
     MuiButton: {
       label: {
         textTransform: 'none',
       },
     },
-    // MuiSvgIcon: {
-    //   root: {
-    //     width: '24rem',
-    //     height: '24rem',
-    //   },
-    // },
   },
 })

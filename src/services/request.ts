@@ -45,7 +45,7 @@ function post<Result, Params>(url: Url): (params?: Params) => Promise<Result> {
     return data.data
   }
 }
-
+console.log(`GLOBAL_CONFIG`, GLOBAL_CONFIG)
 axios.interceptors.request.use(
   (config) => {
     const baserUrl = GLOBAL_CONFIG?.API_SERVER_URL
