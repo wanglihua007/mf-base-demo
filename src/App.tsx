@@ -2,7 +2,7 @@ import { Button } from '@material-ui/core'
 import { useDialog } from '@/hooks'
 import { Scoreboard } from '@/components'
 import { useEffect, useState } from 'react'
-
+import styles from './App.module.css'
 function App() {
   const scoreboardModal = useDialog()
   const [count, setCount] = useState(0)
@@ -15,13 +15,13 @@ function App() {
     }
   }, [])
   return (
-    <div>
+    <div className={styles.root}>
       <Button
         color="primary"
         variant="contained"
         onClick={() => scoreboardModal.open()}
       >
-        打开计分板
+        open
       </Button>
       <div>{count}</div>
       <Scoreboard
